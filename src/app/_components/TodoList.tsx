@@ -1,17 +1,17 @@
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { orbitron } from "@/lib/fonts";
-import { CheckIcon, RotateCcwIcon, Trash2Icon } from "lucide-react";
+import { RotateCcwIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CreateTaskData, DataProps } from "./types";
 import { FormTask } from "./form";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Tasks } from "./tasks";
 
 export function TodoList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +33,7 @@ export function TodoList() {
       id: tasks.length + 1,
       title: data.title,
       description: data.description,
+      isCompleted: false,
     };
     setTasks([...tasks, newTask]);
   }
@@ -41,18 +42,20 @@ export function TodoList() {
     const newList = tasks.filter((task) => task.id !== taskId);
     setTasks(newList);
   }
-  
+
   function removeAllTasks() {
-    const newList = tasks.filter(task => task !== task)
-    setTasks(newList)
+    const newList = tasks.filter((task) => task !== task);
+    setTasks(newList);
   }
+
+  const noCompleted = tasks.filter((task) => !task.isCompleted);
 
   return (
     <>
       <div className="border-white border-l-1 px-2 space-y-6">
         {/* HEADER */}
         <div className="flex justify-between border-white border-b-1 pb-2">
-          <h3 className="text-2xl">Tarefas {tasks.length}</h3>
+          <h3 className="text-2xl">Tarefas {noCompleted.length}</h3>
           <div className="flex items-center gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger className="cursor-pointer">
@@ -77,41 +80,7 @@ export function TodoList() {
         </div>
 
         {/* TASKS */}
-        <Accordion type="single" collapsible className="w-full space-y-4">
-          {tasks.map((task) => (
-            <AccordionItem
-              key={task.id}
-              value={`item-${task.id}`}
-              className={`w-full px-3 text-muted-foreground bg-zinc-900 rounded-sm ${orbitron.className}`}
-            >
-              <div className="flex w-full">
-                <button className="cursor-pointer hover:text-white text-lime-400 mr-2">
-                  <CheckIcon />
-                </button>
-                <div className="flex-1 items-center">
-                  <AccordionTrigger className="flex items-center w-full text-white cursor-pointer">
-                    <p className=" line-clamp-1">{task.title}</p>
-                  </AccordionTrigger>
-                </div>
-              </div>
-
-              <AccordionContent className="pr-0.5">
-                <div className="flex items-center justify-between">
-                  <p
-                    className={`max-w-80 text-justify ${orbitron.className} font-bold text-neutral-400`}
-                  >
-                    {task.description}
-                  </p>
-                  <Trash2Icon
-                    size={20}
-                    className="hover:text-red-600 cursor-pointer"
-                    onClick={() => removeTask(task.id)}
-                  />
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <Tasks tasks={tasks} removeTask={removeTask} setTasks={setTasks} />
       </div>
 
       {isModalOpen && (

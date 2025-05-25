@@ -24,6 +24,7 @@ export function FormTask({ addNewTask, setIsModalOpen }: FormTaskProps) {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (data.title.trim() === "") return
 
     addNewTask(data);
 
