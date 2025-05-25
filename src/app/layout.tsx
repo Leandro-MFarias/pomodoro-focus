@@ -1,16 +1,7 @@
 import type { Metadata } from "next";
-import { Press_Start_2P, Orbitron } from "next/font/google";
 import "./globals.css";
+import { pressStart2p } from "@/lib/fonts";
 
-export const orbitron = Orbitron({
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-});
-
-const pressStart2p = Press_Start_2P({
-  weight: ["400"],
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Pomodoro",

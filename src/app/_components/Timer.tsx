@@ -1,4 +1,4 @@
-import { orbitron } from "../layout";
+import { orbitron } from "@/lib/fonts";
 
 export function Timer() {
   return (
