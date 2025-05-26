@@ -1,18 +1,41 @@
+"use client";
+
 import { orbitron } from "@/lib/fonts";
+import { useState } from "react";
 
 export function Timer() {
+  const [clicked, setClicked] = useState(false);
+
+  function playAudio() {
+    const audio = new Audio("/click-sound.mp3");
+    audio.play();
+    setClicked(!clicked);
+  }
+
   return (
     <div className="flex flex-col items-center justify-center space-y-10">
       {/* NAVIGATION */}
       <ul className="flex gap-8">
         <li className={`bg-red-900/30 px-3 py-1 rounded-md`}>
-          <button className={`text-red-600 cursor-pointer`}>Pomodoro 0</button>
+          <button
+            className={`text-red-600 cursor-pointer`}
+          >
+            Pomodoro 0
+          </button>
         </li>
         <li className={`bg-sky-900/30 px-3 py-1 rounded-md`}>
-          <button className="text-sky-500 cursor-pointer">Descanso 0</button>
+          <button
+            className="text-sky-500 cursor-pointer"
+          >
+            Descanso 0
+          </button>
         </li>
         <li className={`bg-lime-900/30 px-3 py-1 rounded-md`}>
-          <button className="text-lime-500 cursor-pointer">Longo Descanso 0</button>
+          <button
+            className="text-lime-500 cursor-pointer"
+          >
+            Longo Descanso 0
+          </button>
         </li>
       </ul>
 
@@ -23,12 +46,28 @@ export function Timer() {
         >
           25:00
         </p>
-        <span className={`${orbitron.className} tracking-widest`}>Time to Focus!</span>
+        <span className={`${orbitron.className} tracking-widest`}>
+          Time to Focus!
+        </span>
         {/* BOTÃO COMEÇAR */}
-        <button className="relative bg-white text-red-600 font-bold px-14 py-4 rounded-md cursor-pointer after:content-[''] after:absolute after:inset-x-0 after:-bottom-1 after:h-2 after:bg-gray-200 after:rounded-b-md active:translate-y-1 active:after:opacity-0 transition-all duration-100">
-          Começar
-        </button>
+        <div>
+          <audio src="/click-sound.mp3" preload="auto" />
+          <button
+            onClick={playAudio}
+            className={`relative bg-white text-red-600 font-bold px-14 py-4 rounded-md cursor-pointer transition-all duration-100
+            ${clicked ? "translate-y-1" : ""}`}
+          >
+            {!clicked && (
+              <span
+                className="absolute inset-x-0 -bottom-0 h-2 bg-gray-200 rounded-b-md"
+                aria-hidden="true"
+              />
+            )}
+            {clicked ? "Pausar" : "Começar"}
+          </button>
+        </div>
       </div>
     </div>
   );
 }
+ 
