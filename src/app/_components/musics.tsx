@@ -7,18 +7,28 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet";
 import { orbitron } from "@/lib/fonts";
-import { MenuIcon, PauseCircleIcon, PlayCircleIcon } from "lucide-react";
+import {
+  MenuIcon,
+  PauseCircleIcon,
+  PlayCircleIcon,
+  PlayIcon,
+  SkipBackIcon,
+  SkipForwardIcon,
+} from "lucide-react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
 export function Musics() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   function playAudio() {
+    if (!audioRef.current) return;
+
     if (audioRef.current.paused) {
       audioRef.current.play();
       setIsPlaying(true);
@@ -27,14 +37,26 @@ export function Musics() {
       setIsPlaying(false);
     }
   }
-  
+
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <button>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <div className="flex items-center gap-10">
+        <button className="cursor-pointer" onClick={() => setIsOpen(true)}>
           <MenuIcon size={30} />
         </button>
-      </SheetTrigger>
+        <div>
+          <button>
+            <PlayIcon />
+          </button>
+
+          <button>
+            <SkipBackIcon />
+          </button>
+          <button>
+            <SkipForwardIcon />
+          </button>
+        </div>
+      </div>
       <SheetContent side="bottom">
         <SheetHeader>
           <SheetTitle>Mixes</SheetTitle>
@@ -52,12 +74,12 @@ export function Musics() {
               />
               <audio
                 ref={audioRef}
-                src="/02-only-thing-fear.mp3"
+                src="/audios/02-only-thing-fear.mp3"
                 preload="auto"
               />
               <button
                 onClick={playAudio}
-                className="items-center justify-center absolute top-0 bg-black/40 w-full h-full flex opacity-0 hover:opacity-100 transition duration-150"
+                className="items-center justify-center absolute top-0 bg-black/60 w-full h-full flex opacity-0 hover:opacity-100 transition duration-150"
               >
                 {isPlaying ? (
                   <PauseCircleIcon
