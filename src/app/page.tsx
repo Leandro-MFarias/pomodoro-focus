@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { Musics } from "./_components/musics";
 import { Timer } from "./_components/Timer";
 import { TodoList } from "./_components/TodoList";
+import { MusicProvider } from "./_context/context";
 
 export default function Home() {
   // const [couter, setCouter] = useState()
-  const [pomodoro, setPomodoro] = useState<number>(25);
+  const [pomodoro, setPomodoro] = useState<number>(1);
   const [long, setLong] = useState<number>(15);
   const [short, setShort] = useState<number>(5);
   const [seconds, setSeconds] = useState<number>(0);
@@ -65,6 +66,7 @@ export default function Home() {
     const setMinutes = updateMinute();
 
     if (minutes === 0 && seconds === 0) {
+      playAlarm();
       reset();
     } else if (seconds === 0) {
       setMinutes((minute: number) => minute - 1);
@@ -86,6 +88,11 @@ export default function Home() {
       clearInterval(timer);
     };
   }, [seconds, pomodoro, short, long, ticking]);
+
+  function playAlarm() {
+    const audio = new Audio("/public_alarm.mp3");
+    audio.play();
+  }
 
   return (
     <div className="flex flex-col justify-around">
@@ -109,9 +116,14 @@ export default function Home() {
       </div>
 
       {/* PLAYER MUSICS */}
-      <footer className="pl-4 flex py-4 items-center bg-black/70 shadow-t-shape">
-        <Musics />
+      <footer className="pl-6 flex py-4 items-center bg-black/70 shadow-t-shape">
+        <MusicProvider>
+          <Musics />
+        </MusicProvider>
       </footer>
+
+      {/* ALARM */}
+      <audio src="/public_alarm.mp3" preload="auto" />
     </div>
   );
 }
