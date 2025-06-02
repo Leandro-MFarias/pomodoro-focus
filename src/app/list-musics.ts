@@ -12,7 +12,7 @@ export const clair = [
   },
   {
     id: 3,
-    title: "lost_voice",
+    title: "Lost Voice",
     url: "/audios/clair/lost_voice.mp3"
   },
   {
@@ -23,6 +23,6 @@ export const clair = [
   {
     id: 5,
     title: "Lune",
-    url: "/audios/clair/lumiere.mp3"
+    url: "/audios/clair/lune.mp3"
   },
 ]

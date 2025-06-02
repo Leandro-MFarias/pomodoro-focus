@@ -1,6 +1,6 @@
 import { PauseCircleIcon, PlayCircleIcon } from "lucide-react";
 import Image from "next/image";
-import { useMusic } from "../_context/context";
+import { useMusic } from "../context/context";
 
 interface AlbumsProps {
   img: string

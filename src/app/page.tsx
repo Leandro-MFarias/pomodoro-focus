@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Musics } from "./_components/musics";
-import { Timer } from "./_components/Timer";
-import { TodoList } from "./_components/TodoList";
-import { MusicProvider } from "./_context/context";
+import { Musics } from "./components/musics";
+import { Timer } from "./components/Timer";
+import { TodoList } from "./components/TodoList";
+import { MusicProvider } from "./context/context";
 
 export default function Home() {
   // const [couter, setCouter] = useState()
-  const [pomodoro, setPomodoro] = useState<number>(1);
+  const [pomodoro, setPomodoro] = useState<number>(25);
   const [long, setLong] = useState<number>(15);
   const [short, setShort] = useState<number>(5);
   const [seconds, setSeconds] = useState<number>(0);
