@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${pressStart2p.className} antialiased dark`}
+        className={`${pressStart2p.className} antialiased dark overflow-hidden`}
         suppressHydrationWarning
       >
         {children}

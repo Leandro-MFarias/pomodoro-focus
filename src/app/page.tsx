@@ -113,7 +113,7 @@ export default function Home() {
       </main>
 
       {/* PLAYER MUSICS */}
-      <footer className="fixed md:static bottom-0 w-full md:w-auto py-4 md:py-0 pl-2 md:pl-6 flex items-center bg-black/70 shadow-shape">
+      <footer className="fixed md:static bottom-0 w-full md:w-auto py-2 md:py-0 pl-2 md:pl-6 flex items-center bg-black/70 shadow-shape">
         <MusicProvider>
           <Musics />
         </MusicProvider>
