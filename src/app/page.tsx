@@ -113,7 +113,7 @@ export default function Home() {
       </main>
 
       {/* PLAYER MUSICS */}
-      <footer className="pl-6 flex items-center bg-black/70 shadow-shape">
+      <footer className="pl-2 md:pl-6 flex items-center bg-black/70 shadow-shape">
         <MusicProvider>
           <Musics />
         </MusicProvider>

@@ -40,26 +40,34 @@ export function Musics() {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       {/* PLAYER */}
-      <div className="flex items-center space-x-10 w-full">
+      <div className="flex items-center space-x-2 md:space-x-10">
         <button className="cursor-pointer" onClick={() => setIsOpen(true)}>
           <MenuIcon size={40} />
         </button>
-        <div className="flex items-center space-x-6 w-[70%]">
+        <div className="flex items-center space-x-3 md:space-x-6">
           <button onClick={playAudio} className="cursor-pointer">
-            {isPlaying ? <PauseIcon size={35} /> : <PlayIcon size={35} />}
+            {isPlaying ? (
+              <PauseIcon className="w-7 h-7 md:w-9 md:h-9" />
+            ) : (
+              <PlayIcon className="w-7 h-7 md:w-9 md:h-9" />
+            )}
           </button>
 
           <button onClick={prevMusic} className="cursor-pointer">
-            <SkipBackIcon />
+            <SkipBackIcon className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           <button onClick={nextMusic} className="cursor-pointer">
-            <SkipForwardIcon />
+            <SkipForwardIcon className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           <div className="flex items-center w-full space-x-2">
             <button onClick={handleMuteButton}>
-              {volume === 0 ? <VolumeXIcon /> : <Volume2Icon />}
+              {volume === 0 ? (
+                <VolumeXIcon className="w-5 h-5 md:w-6 md:h-6" />
+              ) : (
+                <Volume2Icon className="w-5 h-5 md:w-6 md:h-6" />
+              )}
             </button>
 
             <input
@@ -69,11 +77,13 @@ export function Musics() {
               step={0.01}
               value={volume}
               onChange={handleInputVolume}
-              className="w-28"
+              className="w-20 lg:w-28"
             />
 
             {currentMusic && (
-              <p className={`tracking-tighter text-white/70`}>
+              <p
+                className={`md:tracking-tighter text-white/70 text-xs md:text-sm lg:text-base`}
+              >
                 {currentMusic.title} - Faixa {currentMusic.id}
               </p>
             )}
