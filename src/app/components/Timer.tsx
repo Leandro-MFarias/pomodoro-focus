@@ -52,11 +52,11 @@ export function Timer({
         {options.map((option, index) => (
           <li
             key={index}
-            className={`px-2 xs:px-3 py-1 rounded-md ${buttonsColorByIndex(index)}`}
+            className={`flex items-center px-2 xs:px-3 py-2 rounded-md ${buttonsColorByIndex(index)}`}
           >
             <button
               onClick={() => switchStage(index)}
-              className={`cursor-pointer text-xs xs:text-sm lg:text-base`}
+              className={`cursor-pointer text-[10px] ss:text-xs xs:text-sm lg:text-base`}
             >
               {option}
             </button>
@@ -66,7 +66,7 @@ export function Timer({
 
       {/* Timer */}
       <div
-        className={`flex flex-col items-center justify-around bg-zinc-900 w-[360px] ss:w-[380px] xs:w-[520px] h-[280px] xs:h-[360px] rounded-md ${shadowColor(stage)}`}
+        className={`flex flex-col items-center justify-around bg-zinc-900 w-[350px] ss:w-[380px] xs:w-[520px] h-[250px] xs:h-[360px] rounded-md ${shadowColor(stage)}`}
       >
         <p
           className={`text-6xl xs:text-7xl font-bold mt-6 xs:mt-20 ${orbitron.className} 
@@ -82,14 +82,14 @@ export function Timer({
           <audio src="/click-sound.mp3" preload="auto" />
           <button
             onClick={startTimer}
-            className={`relative bg-white text-2xl font-bold px-14 py-4 rounded-md cursor-pointer transition-all duration-100
+            className={`relative bg-white xs:text-2xl font-bold px-8 xs:px-14 py-3 xs:py-4 rounded-md cursor-pointer transition-all duration-100
             ${ticking ? "translate-y-1" : ""} ${timerTextColor(stage)} ${
               orbitron.className
             }`}
           >
             {!ticking && (
               <span
-                className="absolute inset-x-0 -bottom-0 h-2 bg-gray-200 rounded-b-md"
+                className="absolute inset-x-0 -bottom-0 h-1.5 xs:h-2 bg-gray-200 rounded-b-md"
                 aria-hidden="true"
               />
             )}

@@ -44,7 +44,7 @@ export function Musics() {
         <button className="cursor-pointer" onClick={() => setIsOpen(true)}>
           <MenuIcon size={40} />
         </button>
-        <div className="flex items-center space-x-3 md:space-x-6">
+        <div className="flex items-center space-x-6">
           <button onClick={playAudio} className="cursor-pointer">
             {isPlaying ? (
               <PauseIcon className="w-7 h-7 md:w-9 md:h-9" />
@@ -77,12 +77,12 @@ export function Musics() {
               step={0.01}
               value={volume}
               onChange={handleInputVolume}
-              className="w-20 lg:w-28"
+              className="w-24 sm:w-28"
             />
 
             {currentMusic && (
               <p
-                className={`md:tracking-tighter text-white/70 text-xs md:text-sm lg:text-base`}
+                className={`md:tracking-tighter text-white/70 sm:text-xs md:text-sm lg:text-base hidden sm:block`}
               >
                 {currentMusic.title} - Faixa {currentMusic.id}
               </p>
