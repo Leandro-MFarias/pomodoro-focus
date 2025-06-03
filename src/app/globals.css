@@ -142,4 +142,5 @@
 
 @theme {
   --breakpoint-xs: 540px;
+  --breakpoint-ss: 428px;
 }

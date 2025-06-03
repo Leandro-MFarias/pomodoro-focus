@@ -97,10 +97,10 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[60px_1fr_68px] h-screen ">
       {/* HEADER */}
-      <h1 className={`text-center md:text-start text-3xl xs:text-4xl xl:text-5xl py-4 md:py-8 md:pl-10`}>Pomodoro Timer</h1>
+      <h1 className={`text-center md:text-start text-2xl ss:text-3xl xs:text-4xl xl:text-5xl py-4 md:py-8 md:pl-10`}>Pomodoro Timer</h1>
 
       {/* MAIN CONTENT */}
-      <main className="grid md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_420px]">
+      <main className="grid grid-rows-[1fr_120px] md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_420px]">
         <Timer
           stage={stage}
           switchStage={switchStage}

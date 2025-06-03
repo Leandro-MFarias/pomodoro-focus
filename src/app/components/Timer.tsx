@@ -66,10 +66,10 @@ export function Timer({
 
       {/* Timer */}
       <div
-        className={`flex flex-col items-center justify-around bg-zinc-900 w-[380px] xs:w-[520px] h-[280px] xs:h-[360px] rounded-md ${shadowColor(stage)}`}
+        className={`flex flex-col items-center justify-around bg-zinc-900 w-[360px] ss:w-[380px] xs:w-[520px] h-[280px] xs:h-[360px] rounded-md ${shadowColor(stage)}`}
       >
         <p
-          className={`text-7xl font-bold mt-10 xs:mt-20 ${orbitron.className} 
+          className={`text-6xl xs:text-7xl font-bold mt-6 xs:mt-20 ${orbitron.className} 
           ${timerTextColor(stage)}`}
         >
           {getTimes()}:{seconds.toString().padStart(2, "0")}
