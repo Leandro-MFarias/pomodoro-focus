@@ -95,28 +95,25 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col justify-around">
-      <div className="space-y-4 px-6 pr-2 mt-3">
-        <h1 className={`text-5xl translate-6 `}>Pomodoro Timer</h1>
+    <div className="grid grid-rows-[60px_1fr_68px] h-screen ">
+      {/* HEADER */}
+      <h1 className={`text-center md:text-start text-3xl xs:text-4xl xl:text-5xl py-4 md:py-8 md:pl-10`}>Pomodoro Timer</h1>
 
-        <div className="grid grid-cols-[1fr_420px] h-[86vh]">
-          {/* PRINCIPAL CONTAINER */}
-          <Timer
-            stage={stage}
-            switchStage={switchStage}
-            getTimes={getTimes}
-            seconds={seconds}
-            ticking={ticking}
-            setTicking={setTicking}
-          />
-
-          {/* TODO LIST */}
-          <TodoList />
-        </div>
-      </div>
+      {/* MAIN CONTENT */}
+      <main className="grid md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_420px]">
+        <Timer
+          stage={stage}
+          switchStage={switchStage}
+          getTimes={getTimes}
+          seconds={seconds}
+          ticking={ticking}
+          setTicking={setTicking}
+        />
+        <TodoList />
+      </main>
 
       {/* PLAYER MUSICS */}
-      <footer className="pl-6 flex py-4 items-center bg-black/70 shadow-t-shape">
+      <footer className="pl-6 flex items-center bg-black/70 shadow-shape">
         <MusicProvider>
           <Musics />
         </MusicProvider>
@@ -127,3 +124,5 @@ export default function Home() {
     </div>
   );
 }
+
+// NA DIV COM GRID 1FR_420PX ==== h-[86vh]

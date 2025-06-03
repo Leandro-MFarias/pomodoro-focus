@@ -40,7 +40,7 @@ export function Musics() {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       {/* PLAYER */}
-      <div className="flex items-center space-x-10 -translate-y-1.5 w-full">
+      <div className="flex items-center space-x-10 w-full">
         <button className="cursor-pointer" onClick={() => setIsOpen(true)}>
           <MenuIcon size={40} />
         </button>

@@ -46,17 +46,17 @@ export function Timer({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-10">
+    <div className="flex flex-col items-center justify-center space-y-4 md:space-y-10">
       {/* NAVIGATION */}
-      <ul className="flex gap-8 pl-12">
+      <ul className="flex space-x-2 xs:space-x-6 xl:pl-8">
         {options.map((option, index) => (
           <li
             key={index}
-            className={`px-3 py-1 rounded-md ${buttonsColorByIndex(index)}`}
+            className={`px-2 xs:px-3 py-1 rounded-md ${buttonsColorByIndex(index)}`}
           >
             <button
               onClick={() => switchStage(index)}
-              className={`cursor-pointer`}
+              className={`cursor-pointer text-xs xs:text-sm lg:text-base`}
             >
               {option}
             </button>
@@ -66,7 +66,7 @@ export function Timer({
 
       {/* Timer */}
       <div
-        className={`flex flex-col items-center justify-around bg-zinc-900 w-[520px] h-[360px] rounded-md ${shadowColor(stage)}`}
+        className={`flex flex-col items-center justify-around bg-zinc-900 w-[380px] xs:w-[520px] h-[360px] rounded-md ${shadowColor(stage)}`}
       >
         <p
           className={`text-7xl font-bold mt-20 ${orbitron.className} 

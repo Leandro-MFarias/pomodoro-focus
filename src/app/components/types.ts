@@ -1,7 +1,7 @@
 export interface CreateTaskData {
   title: string;
   description: string;
-  isCompleted: boolean
+  isCompleted?: boolean
 }
 
 export interface DataProps extends CreateTaskData {
