@@ -11,7 +11,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { clair } from "../list-musics";
+import { clair, Track } from "../list-musics";
 
 interface MusicContextType {
   isPlaying: boolean;
@@ -19,7 +19,7 @@ interface MusicContextType {
   playAudio: () => void;
   nextMusic: () => void;
   prevMusic: () => void;
-  currentTrack: {
+  currentMusic: {
     id: number;
     title: string;
     url: string;
@@ -27,35 +27,48 @@ interface MusicContextType {
   volume: number;
   handleInputVolume: (e: ChangeEvent<HTMLInputElement>) => void;
   handleMuteButton: () => void;
+  albumToPlay: (albumSelected: Track[]) => void;
 }
 
 const MusicContext = createContext<MusicContextType | undefined>(undefined);
 
 export function MusicProvider({ children }: { children: ReactNode }) {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0); // Index da Musica a tocar
-  const [volume, setVolume] = useState(0.4);
+  const [album, setAlbum] = useState<Track[]>(clair); // Qual album vai ser tocado
+  const [volume, setVolume] = useState(0.3); // Armazena um volume padrão
   const [isPlaying, setIsPlaying] = useState(false); // Verifica se está tocando ou não
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [currentMusic, setCurrentMusic] = useState(clair[0]) // Salva a musica atual para mostra o nome
+  
+  const audioRef = useRef<HTMLAudioElement | null>(null); // Cria uma referencia para o audio
 
-  const currentTrack = clair[currentTrackIndex]; // Recebe a msc conformo o index
+  function albumToPlay(albumSelected: Track[]) {
+    setAlbum(albumSelected)
+    setCurrentTrackIndex(0)
+  }
 
   useEffect(() => {
-    const audio = (audioRef.current = new Audio(currentTrack.url));
+    const track = album[currentTrackIndex];
+    if (!track) return;
+
+    const audio = (audioRef.current = new Audio(track.url));
     audio.volume = volume;
-    if (isPlaying) audio.play();
+
+    setCurrentMusic(track)
+    if (isPlaying) audio.play()
 
     function handleEnded() {
-      setCurrentTrackIndex((prev) => (prev + 1) % clair.length);
+      setCurrentTrackIndex((prev) => (prev + 1) % album.length);
     }
 
-    audio.addEventListener("ended", handleEnded)
+    audio.addEventListener("ended", handleEnded);
 
     return () => {
       audio.pause();
-      audio.removeEventListener("ended", handleEnded)
+      audio.removeEventListener("ended", handleEnded);
     };
-  }, [currentTrackIndex]);
+  }, [currentTrackIndex, album]);
 
+  // FUNCTION DE START E PAUSE 
   function playAudio() {
     const audio = audioRef.current;
     if (!audio) return;
@@ -69,11 +82,11 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   }
 
   function nextMusic() {
-    setCurrentTrackIndex((prev) => (prev + 1) % clair.length);
+    setCurrentTrackIndex((prev) => (prev + 1) % album.length);
   }
 
   function prevMusic() {
-    setCurrentTrackIndex((prev) => (prev === 0 ? clair.length - 1 : prev - 1));
+    setCurrentTrackIndex((prev) => (prev === 0 ? album.length - 1 : prev - 1));
   }
 
   function handleInputVolume(e: ChangeEvent<HTMLInputElement>) {
@@ -85,7 +98,7 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   function handleMuteButton() {
     let newVolume = 0;
     if (volume === 0) {
-      newVolume = 0.4;
+      newVolume = 0.3;
       setVolume(newVolume);
     } else {
       setVolume(newVolume);
@@ -102,10 +115,11 @@ export function MusicProvider({ children }: { children: ReactNode }) {
         playAudio,
         nextMusic,
         prevMusic,
-        currentTrack,
         volume,
         handleInputVolume,
         handleMuteButton,
+        albumToPlay,
+        currentMusic,
       }}
     >
       {children}
