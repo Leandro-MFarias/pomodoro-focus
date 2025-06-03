@@ -95,7 +95,7 @@ export default function Home() {
   }
 
   return (
-    <div className="grid grid-rows-[60px_1fr_68px] h-screen ">
+    <div className="grid grid-rows-[60px_1fr_68px] h-screen">
       {/* HEADER */}
       <h1 className={`text-center md:text-start text-2xl ss:text-3xl xs:text-4xl xl:text-5xl py-4 md:py-8 md:pl-10`}>Pomodoro Timer</h1>
 
@@ -113,7 +113,7 @@ export default function Home() {
       </main>
 
       {/* PLAYER MUSICS */}
-      <footer className="pl-2 md:pl-6 flex items-center bg-black/70 shadow-shape">
+      <footer className="fixed md:static bottom-0 w-full md:w-auto py-4 md:py-0 pl-2 md:pl-6 flex items-center bg-black/70 shadow-shape">
         <MusicProvider>
           <Musics />
         </MusicProvider>
@@ -124,5 +124,3 @@ export default function Home() {
     </div>
   );
 }
-
-// NA DIV COM GRID 1FR_420PX ==== h-[86vh]
