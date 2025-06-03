@@ -3,12 +3,12 @@
 import { orbitron } from "@/lib/fonts";
 
 interface TimerProps {
-  stage: number
-  switchStage: (index: number) => void
-  getTimes: () => number
-  seconds: number
-  ticking: boolean
-  setTicking: (ticking: boolean) => void
+  stage: number;
+  switchStage: (index: number) => void;
+  getTimes: () => number;
+  seconds: number;
+  ticking: boolean;
+  setTicking: (ticking: boolean) => void;
 }
 
 export function Timer({
@@ -24,7 +24,7 @@ export function Timer({
   function startTimer() {
     const audio = new Audio("/click-sound.mp3");
     audio.play();
-    setTicking(!ticking)
+    setTicking(!ticking);
   }
 
   function buttonsColorByIndex(index: number) {
@@ -34,10 +34,16 @@ export function Timer({
   }
 
   function timerTextColor(stage: number): string {
-  if (stage === 0) return "text-red-600";
-  if (stage === 1) return "text-sky-600";
-  return "text-lime-600";
-}
+    if (stage === 0) return "text-red-600";
+    if (stage === 1) return "text-sky-600";
+    return "text-green-500";
+  }
+
+  function shadowColor(stage: number) {
+    if (stage === 0) return "shadow-red"
+    if (stage === 1) return "shadow-blue"
+    return "shadow-green"
+  }
 
   return (
     <div className="flex flex-col items-center justify-center space-y-10">
@@ -59,7 +65,9 @@ export function Timer({
       </ul>
 
       {/* Timer */}
-      <div className="flex flex-col items-center justify-around bg-zinc-900 w-[520px] h-[360px] rounded-md shadow-shape">
+      <div
+        className={`flex flex-col items-center justify-around bg-zinc-900 w-[520px] h-[360px] rounded-md ${shadowColor(stage)}`}
+      >
         <p
           className={`text-7xl font-bold mt-20 ${orbitron.className} 
           ${timerTextColor(stage)}`}
@@ -75,7 +83,9 @@ export function Timer({
           <button
             onClick={startTimer}
             className={`relative bg-white text-2xl font-bold px-14 py-4 rounded-md cursor-pointer transition-all duration-100
-            ${ticking ? "translate-y-1" : ""} ${timerTextColor(stage)} ${orbitron.className}`}
+            ${ticking ? "translate-y-1" : ""} ${timerTextColor(stage)} ${
+              orbitron.className
+            }`}
           >
             {!ticking && (
               <span

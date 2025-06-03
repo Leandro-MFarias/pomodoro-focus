@@ -97,7 +97,7 @@ export default function Home() {
   return (
     <div className="flex flex-col justify-around">
       <div className="space-y-4 px-6 pr-2 mt-3">
-        <h1 className={`text-5xl translate-y-4`}>Pomodoro Timer</h1>
+        <h1 className={`text-5xl translate-6 `}>Pomodoro Timer</h1>
 
         <div className="grid grid-cols-[1fr_420px] h-[86vh]">
           {/* PRINCIPAL CONTAINER */}
