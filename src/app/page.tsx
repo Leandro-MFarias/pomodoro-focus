@@ -100,7 +100,7 @@ export default function Home() {
       <h1 className={`text-center md:text-start text-2xl ss:text-3xl xs:text-4xl xl:text-5xl py-4 md:py-8 md:pl-10`}>Pomodoro Timer</h1>
 
       {/* MAIN CONTENT */}
-      <main className="grid grid-rows-[1fr_120px] md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_420px]">
+      <main className="grid xs:grid-rows-[1fr_240px] sm:grid-rows-[1fr_320px] md:grid-rows-none md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_420px] space-y-4 sm:space-y-0">
         <Timer
           stage={stage}
           switchStage={switchStage}
