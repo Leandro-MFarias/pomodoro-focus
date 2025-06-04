@@ -1,6 +1,7 @@
 "use client";
 
 import { orbitron } from "@/lib/fonts";
+import { useState } from "react";
 
 interface TimerProps {
   stage: number;
@@ -19,6 +20,7 @@ export function Timer({
   ticking,
   setTicking,
 }: TimerProps) {
+  const [selected, setSelected] = useState(0);
   const options = ["Pomodoro", "Descanso", "Longo Descanso"];
 
   function startTimer() {
@@ -28,9 +30,9 @@ export function Timer({
   }
 
   function buttonsColorByIndex(index: number) {
-    if (index === 0) return "bg-red-900/30 text-red-600";
-    if (index === 1) return "bg-sky-900/30 text-sky-600";
-    return "bg-lime-900/30 text-lime-500";
+    if (index === 0) return "text-red-600";
+    if (index === 1) return "text-sky-600";
+    return "text-lime-500";
   }
 
   function timerTextColor(stage: number): string {
@@ -40,9 +42,21 @@ export function Timer({
   }
 
   function shadowColor(stage: number) {
-    if (stage === 0) return "shadow-red"
-    if (stage === 1) return "shadow-blue"
-    return "shadow-green"
+    if (stage === 0) return "shadow-red";
+    if (stage === 1) return "shadow-blue";
+    return "shadow-green";
+  }
+
+  function getBackgroundColor(index: number): string {
+    if (index === 0) return "bg-red-900/30";
+    if (index === 1) return "bg-sky-900/30";
+    if (index === 2) return "bg-lime-900/30";
+    return "";
+  }
+
+  function handleSelect(index: number) {
+    setSelected(index);
+    switchStage(index);
   }
 
   return (
@@ -52,10 +66,14 @@ export function Timer({
         {options.map((option, index) => (
           <li
             key={index}
-            className={`flex items-center px-2 xs:px-3 py-2 rounded-md ${buttonsColorByIndex(index)}`}
+            className={`${
+              selected === index && getBackgroundColor(index)
+            } flex items-center px-2 xs:px-3 py-2 rounded-md ${buttonsColorByIndex(
+              index
+            )}`}
           >
             <button
-              onClick={() => switchStage(index)}
+              onClick={() => handleSelect(index)}
               className={`cursor-pointer text-[10px] ss:text-xs xs:text-sm lg:text-base`}
             >
               {option}
@@ -66,10 +84,14 @@ export function Timer({
 
       {/* Timer */}
       <div
-        className={`flex flex-col items-center justify-around bg-zinc-900 w-[350px] ss:w-[380px] xs:w-[520px] h-[250px] xs:h-[360px] rounded-md ${shadowColor(stage)}`}
+        className={`flex flex-col items-center justify-around bg-zinc-900 w-[350px] ss:w-[380px] xs:w-[520px] h-[250px] xs:h-[360px] rounded-md ${shadowColor(
+          stage
+        )}`}
       >
         <p
-          className={`text-6xl xs:text-7xl font-bold mt-6 xs:mt-20 ${orbitron.className} 
+          className={`text-6xl xs:text-7xl font-bold mt-6 xs:mt-20 ${
+            orbitron.className
+          } 
           ${timerTextColor(stage)}`}
         >
           {getTimes()}:{seconds.toString().padStart(2, "0")}

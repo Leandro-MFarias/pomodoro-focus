@@ -119,7 +119,6 @@ export default function Home() {
           <Musics />
         </MusicProvider>
       </footer>
-
     </div>
   );
 }
