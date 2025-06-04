@@ -90,7 +90,8 @@ export default function Home() {
   }, [seconds, pomodoro, short, long, ticking]);
 
   function playAlarm() {
-    const audio = new Audio("/public_alarm.mp3");
+    const audio = new Audio("/game-alarm.mp3");
+    audio.volume = 0.4
     audio.play();
   }
 
@@ -119,8 +120,6 @@ export default function Home() {
         </MusicProvider>
       </footer>
 
-      {/* ALARM */}
-      <audio src="/public_alarm.mp3" preload="auto" />
     </div>
   );
 }

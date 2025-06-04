@@ -4,11 +4,9 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { orbitron } from "@/lib/fonts";
 import {
   MenuIcon,
   PauseIcon,
@@ -22,6 +20,7 @@ import { useState } from "react";
 import { Albums } from "./albums";
 import { useMusic } from "../context/context";
 import { clair, doom, zelda } from "../list-musics";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export function Musics() {
   const {
@@ -92,40 +91,58 @@ export function Musics() {
       </div>
 
       {/* ALBUMS */}
-      <SheetContent side="bottom">
+      <SheetContent side="bottom" className="rounded-t-3xl pb-1">
         <SheetHeader>
-          <SheetTitle>Mixes</SheetTitle>
+          <SheetTitle className="text-xl">Albums</SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
-        <div className={`flex gap-x-4 pl-8 px-4 ${orbitron.className}`}>
-          {/* CLAIR  */}
-          <Albums
-            img="/clair.png"
-            alt="Clair Obscure Album"
-            name="Clair Obscure"
-            tracks="8 tracks"
-            album={clair}
-          />
+        <ScrollArea type="always">
+          <div className={`flex gap-x-4 pl-8 px-3 pb-5`}>
+            {/* CLAIR  */}
+            <Albums
+              img="/clair.png"
+              alt="Clair Obscure Album"
+              name="Clair Obscure"
+              tracks="8 tracks"
+              album={clair}
+            />
 
-          {/* DOOM */}
-          <Albums
-            img="/doom.jpg"
-            alt="Doom Album"
-            name="Doom Slayer"
-            tracks="7 tracks"
-            album={doom}
-          />
+            {/* DOOM */}
+            <Albums
+              img="/doom.jpg"
+              alt="Doom Album"
+              name="Doom Slayer"
+              tracks="7 tracks"
+              album={doom}
+            />
 
-          {/* ZELDA */}
-          <Albums
-            img="/zelda.png"
-            alt="Zelda Album"
-            name="Zelda Ocarina"
-            tracks="7 tracks"
-            album={zelda}
-          />
-        </div>
-        <SheetFooter></SheetFooter>
+            {/* ZELDA */}
+            <Albums
+              img="/zelda.png"
+              alt="Zelda Album"
+              name="Zelda Ocarina"
+              tracks="7 tracks"
+              album={zelda}
+            />
+
+            {/* TAVERNA */}
+            <Albums
+              img="/zelda.png"
+              alt="Zelda Album"
+              name="Zelda Ocarina"
+              tracks="7 tracks"
+              album={zelda}
+            />
+            <Albums
+              img="/zelda.png"
+              alt="Zelda Album"
+              name="Zelda Ocarina"
+              tracks="7 tracks"
+              album={zelda}
+            />
+            <ScrollBar orientation="horizontal" />
+          </div>
+        </ScrollArea>
       </SheetContent>
     </Sheet>
   );

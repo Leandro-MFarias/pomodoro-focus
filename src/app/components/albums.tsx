@@ -2,6 +2,7 @@ import { PauseCircleIcon, PlayCircleIcon } from "lucide-react";
 import Image from "next/image";
 import { useMusic } from "../context/context";
 import { Track } from "../list-musics";
+import { orbitron } from "@/lib/fonts";
 interface AlbumsProps {
   img: string
   alt: string
@@ -27,10 +28,11 @@ export function Albums({ img, alt, name, tracks, album }: AlbumsProps) {
           width={160}
           height={160}
           alt={alt}
+          className="rounded-md"
         />
         <button
           onClick={() => startAlbum(album)}
-          className="items-center justify-center absolute top-0 bg-black/60 w-full h-full flex opacity-0 hover:opacity-100 transition duration-150"
+          className="items-center justify-center absolute top-0 bg-black/60 w-full h-full flex opacity-0 hover:opacity-100 transition duration-150 rounded-lg"
         >
           {isPlaying ? (
             <PauseCircleIcon
@@ -45,9 +47,9 @@ export function Albums({ img, alt, name, tracks, album }: AlbumsProps) {
           )}
         </button>
       </div>
-      <div className="pl-4 self-start font-semibold">
-        <h4>{name}</h4>
-        <span>{tracks}</span>
+      <div className={`px-2 text-center ${orbitron.className} w-full`}>
+        <h4 className="font-bold">{name}</h4>
+        <button className="bg-neutral-950 px-8 py-1 rounded-sm text-white cursor-pointer">{tracks}</button>
       </div>
     </div>
   );
