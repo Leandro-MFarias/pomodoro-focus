@@ -24,7 +24,7 @@ export function Albums({ img, alt, name, tracks, album }: AlbumsProps) {
   }
 
   return (
-    <div className="h-64 w-[198px] flex flex-col items-center justify-center bg-white/80 text-black space-y-2 rounded-lg">
+    <div className="h-68 w-[198px] flex flex-col items-center justify-center bg-white/80 text-black space-y-2 rounded-lg">
       <div className="relative">
         <Image
           src={img}
