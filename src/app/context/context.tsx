@@ -36,7 +36,7 @@ const MusicContext = createContext<MusicContextType | undefined>(undefined);
 export function MusicProvider({ children }: { children: ReactNode }) {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0); // Index da Musica a tocar
   const [album, setAlbum] = useState<Track[]>(clair); // Qual album vai ser tocado
-  const [volume, setVolume] = useState(0.1); // Armazena um volume padrão
+  const [volume, setVolume] = useState(0.3); // Armazena um volume padrão
   const [isPlaying, setIsPlaying] = useState(false); // Verifica se está tocando ou não
   const [currentMusic, setCurrentMusic] = useState(clair[0]) // Salva a musica atual para mostra o nome
   const [albumName, setAlbumName] = useState("Clair Obscure") // Nome do album tocado
