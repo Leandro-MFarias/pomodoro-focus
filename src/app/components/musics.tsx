@@ -103,7 +103,7 @@ export function Musics() {
               img="/clair.png"
               alt="Clair Obscure Album"
               name="Clair Obscure"
-              tracks="12 tracks"
+              tracks={`${clair.length} tracks`}
               album={clair}
             />
 
@@ -112,7 +112,7 @@ export function Musics() {
               img="/doom.jpg"
               alt="Doom Album"
               name="Doom Slayer"
-              tracks="7 tracks"
+              tracks={`${doom.length} tracks`}
               album={doom}
             />
 
@@ -121,7 +121,7 @@ export function Musics() {
               img="/zelda.png"
               alt="Zelda Album"
               name="Zelda Ocarina"
-              tracks="7 tracks"
+              tracks={`${zelda.length} tracks`}
               album={zelda}
             />
             <ScrollBar orientation="horizontal" />
