@@ -5,5 +5,5 @@ export interface CreateTaskData {
 }
 
 export interface DataProps extends CreateTaskData {
-  id: number;
+  id: string;
 }

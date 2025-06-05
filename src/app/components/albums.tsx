@@ -21,7 +21,7 @@ export function Albums({ img, alt, name, tracks, album }: AlbumsProps) {
   }
 
   return (
-    <div className="h-64 w-48 flex flex-col items-center justify-center bg-white/80 text-black space-y-2 rounded-lg">
+    <div className="h-64 w-[198px] flex flex-col items-center justify-center bg-white/80 text-black space-y-2 rounded-lg">
       <div className="relative">
         <Image
           src={img}
@@ -47,9 +47,9 @@ export function Albums({ img, alt, name, tracks, album }: AlbumsProps) {
           )}
         </button>
       </div>
-      <div className={`px-2 text-center ${orbitron.className} w-full`}>
-        <h4 className="font-bold">{name}</h4>
-        <button className="bg-neutral-950 px-8 py-1 rounded-sm text-white cursor-pointer">{tracks}</button>
+      <div className={`px-2 text-center w-full space-y-2.5 ${orbitron.className}`}>
+        <h4 className="text-xl">{name}</h4>
+        <button className="bg-blue-500 w-40 py-1 rounded-[3px] text-white cursor-pointer">{tracks}</button>
       </div>
     </div>
   );

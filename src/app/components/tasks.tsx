@@ -10,13 +10,13 @@ import { DataProps } from "./types";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface TasksProps {
-  removeTask: (id: number) => void;
+  removeTask: (id: string) => void;
   tasks: DataProps[];
   setTasks: React.Dispatch<React.SetStateAction<DataProps[]>>;
 }
 
 export function Tasks({ tasks, removeTask, setTasks }: TasksProps) {
-  function handleTaskCompleted(taskId: number) {
+  function handleTaskCompleted(taskId: string) {
     const newTasks = tasks.map((task) => {
       if (task.id === taskId) {
         return { ...task, isCompleted: !task.isCompleted };
@@ -48,7 +48,7 @@ export function Tasks({ tasks, removeTask, setTasks }: TasksProps) {
               <div className="flex-1 items-center">
                 <AccordionTrigger className="flex items-center w-full text-white cursor-pointer">
                   <p
-                    className={`line-clamp-1 ${
+                    className={`line-clamp-1 hover:line-clamp-none ${
                       task.isCompleted && "line-through text-muted-foreground"
                     }`}
                   >

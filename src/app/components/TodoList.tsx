@@ -4,6 +4,7 @@ import { orbitron } from "@/lib/fonts";
 import { RotateCcwIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CreateTaskData, DataProps } from "./types";
+import { v4 as uuidv4 } from 'uuid';
 import { FormTask } from "./form";
 import {
   DropdownMenu,
@@ -30,7 +31,7 @@ export function TodoList() {
 
   function addNewTask(data: CreateTaskData) {
     const newTask = {
-      id: tasks.length + 1,
+      id: uuidv4(),
       title: data.title,
       description: data.description,
       isCompleted: false,
@@ -38,7 +39,7 @@ export function TodoList() {
     setTasks([...tasks, newTask]);
   }
 
-  function removeTask(taskId: number) {
+  function removeTask(taskId: string) {
     const newList = tasks.filter((task) => task.id !== taskId);
     setTasks(newList);
   }

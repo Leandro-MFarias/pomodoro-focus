@@ -91,13 +91,13 @@ export function Musics() {
       </div>
 
       {/* ALBUMS */}
-      <SheetContent side="bottom" className="rounded-t-3xl pb-1">
+      <SheetContent side="bottom" className="rounded-t-3xl pb-4">
         <SheetHeader>
           <SheetTitle className="text-xl">Albums</SheetTitle>
           <SheetDescription></SheetDescription>
         </SheetHeader>
         <ScrollArea type="always">
-          <div className={`flex gap-x-4 pl-8 px-3 pb-5`}>
+          <div className={`flex gap-x-6 pl-8 px-3 pb-5`}>
             {/* CLAIR  */}
             <Albums
               img="/clair.png"
