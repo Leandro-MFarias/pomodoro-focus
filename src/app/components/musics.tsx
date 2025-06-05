@@ -103,7 +103,7 @@ export function Musics() {
               img="/clair.png"
               alt="Clair Obscure Album"
               name="Clair Obscure"
-              tracks="8 tracks"
+              tracks="12 tracks"
               album={clair}
             />
 
@@ -117,22 +117,6 @@ export function Musics() {
             />
 
             {/* ZELDA */}
-            <Albums
-              img="/zelda.png"
-              alt="Zelda Album"
-              name="Zelda Ocarina"
-              tracks="7 tracks"
-              album={zelda}
-            />
-
-            {/* TAVERNA */}
-            <Albums
-              img="/zelda.png"
-              alt="Zelda Album"
-              name="Zelda Ocarina"
-              tracks="7 tracks"
-              album={zelda}
-            />
             <Albums
               img="/zelda.png"
               alt="Zelda Album"
