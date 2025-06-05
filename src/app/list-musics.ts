@@ -134,7 +134,7 @@ export const zelda: Track[] = [
   {
     id: 6,
     title: "Songs of Healing",
-    url: "/audios/zelda/songs-of-healing.mp3",
+    url: "/audios/zelda/songs-healing.mp3",
   },
   {
     id: 7,
