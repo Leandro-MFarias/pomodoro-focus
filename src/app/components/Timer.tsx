@@ -62,19 +62,19 @@ export function Timer({
   return (
     <div className="flex flex-col items-center justify-center space-y-4 md:space-y-10">
       {/* NAVIGATION */}
-      <ul className="flex space-x-2 xs:space-x-6 xl:pl-8">
+      <ul className="flex space-x-1.5 xs:space-x-3 sm:space-x-6 px-1 sm:px-0 xl:pl-8">
         {options.map((option, index) => (
           <li
             key={index}
             className={`${
               selected === index && getBackgroundColor(index)
-            } flex items-center px-2 xs:px-3 py-2 rounded-md ${buttonsColorByIndex(
+            } flex items-center px-1.5 py-1 ss:px-2 xs:px-3 ss:py-2 rounded-md ${buttonsColorByIndex(
               index
             )}`}
           >
             <button
               onClick={() => handleSelect(index)}
-              className={`cursor-pointer text-[10px] ss:text-xs xs:text-sm lg:text-base`}
+              className={`cursor-pointer text-[9px] ss:text-xs xs:text-sm lg:text-base`}
             >
               {option}
             </button>
@@ -84,7 +84,7 @@ export function Timer({
 
       {/* Timer */}
       <div
-        className={`flex flex-col items-center justify-around bg-zinc-900 w-[350px] ss:w-[380px] xs:w-[520px] h-[250px] xs:h-[360px] rounded-md ${shadowColor(
+        className={`flex flex-col items-center justify-around bg-zinc-900 w-[324px] h-[224px] ss:w-[420px] ss:h-[270px] xs:w-[520px] xs:h-[360px] rounded-md ${shadowColor(
           stage
         )}`}
       >

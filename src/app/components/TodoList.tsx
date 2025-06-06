@@ -53,7 +53,7 @@ export function TodoList() {
 
   return (
     <>
-      <div className="md:border-zinc-500 md:border-l-1 px-2 space-y-6 max-w-[460px] sm:max-w-2xl mx-auto w-full mt-2">
+      <div className="md:border-zinc-500 md:border-l-1 px-2 space-y-6 max-w-[90%] ss:max-w-[460px] sm:max-w-2xl mx-auto w-full mt-2">
         {/* HEADER */}
         <div className="flex justify-between border-white border-b-1 pb-2">
           <h3 className="lg:text-2xl">Tarefas {noCompleted.length}</h3>
