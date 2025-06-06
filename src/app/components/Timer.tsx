@@ -97,7 +97,7 @@ export function Timer({
           {getTimes()}:{seconds.toString().padStart(2, "0")}
         </p>
         <span className={`${orbitron.className} tracking-widest`}>
-          Time to Focus!
+          {selected === 0 ? "Time to focus!" : "Time for a break!" }
         </span>
         {/* BOTÃO COMEÇAR */}
         <div>
