@@ -1,33 +1,22 @@
 "use client";
 
 import { orbitron } from "@/lib/fonts";
-import { useState } from "react";
-
 interface TimerProps {
   stage: number;
   switchStage: (index: number) => void;
-  getTimes: () => number;
-  seconds: number;
+  timeLeft: number;
   ticking: boolean;
-  setTicking: (ticking: boolean) => void;
+  startTimer: () => void
 }
 
 export function Timer({
   stage,
   switchStage,
-  getTimes,
-  seconds,
+  timeLeft,
   ticking,
-  setTicking,
+  startTimer,
 }: TimerProps) {
-  const [selected, setSelected] = useState(0);
   const options = ["Pomodoro", "Descanso", "Longo Descanso"];
-
-  function startTimer() {
-    const audio = new Audio("/click-sound.mp3");
-    audio.play();
-    setTicking(!ticking);
-  }
 
   function buttonsColorByIndex(index: number) {
     if (index === 0) return "text-red-600";
@@ -54,9 +43,12 @@ export function Timer({
     return "";
   }
 
-  function handleSelect(index: number) {
-    setSelected(index);
-    switchStage(index);
+  
+  function formatTime(ms: number) {
+    const totalSeconds = Math.ceil(ms / 1000)
+    const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0")
+    const seconds = String(totalSeconds % 60).padStart(2, "0")
+    return `${minutes}:${seconds}`
   }
 
   return (
@@ -67,13 +59,13 @@ export function Timer({
           <li
             key={index}
             className={`${
-              selected === index && getBackgroundColor(index)
+              stage === index && getBackgroundColor(index)
             } flex items-center px-1.5 py-1 ss:px-2 xs:px-3 ss:py-2 rounded-md ${buttonsColorByIndex(
               index
             )}`}
           >
             <button
-              onClick={() => handleSelect(index)}
+              onClick={() => switchStage(index)}
               className={`cursor-pointer text-[9px] ss:text-xs xs:text-sm lg:text-base`}
             >
               {option}
@@ -94,14 +86,13 @@ export function Timer({
           } 
           ${timerTextColor(stage)}`}
         >
-          {getTimes()}:{seconds.toString().padStart(2, "0")}
+          {formatTime(timeLeft)}
         </p>
         <span className={`${orbitron.className} tracking-widest`}>
-          {selected === 0 ? "Time to focus!" : "Time for a break!" }
+          {stage === 0 ? "Time to focus!" : "Time for a break!" }
         </span>
         {/* BOTÃO COMEÇAR */}
         <div>
-          <audio src="/click-sound.mp3" preload="auto" />
           <button
             onClick={startTimer}
             className={`relative bg-white xs:text-2xl font-bold px-8 xs:px-14 py-3 xs:py-4 rounded-md cursor-pointer transition-all duration-100
