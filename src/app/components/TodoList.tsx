@@ -4,7 +4,7 @@ import { orbitron } from "@/lib/fonts";
 import { RotateCcwIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CreateTaskData, DataProps } from "./types";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { FormTask } from "./form";
 import {
   DropdownMenu,
@@ -17,13 +17,25 @@ import { Tasks } from "./tasks";
 export function TodoList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tasks, setTasks] = useState<DataProps[]>([]);
+  const [orderedTasks, setOrderedTasks] = useState<DataProps[]>([]);
 
   useEffect(() => {
     const stored = localStorage.getItem("tasks");
-    if (stored) {
-      setTasks(JSON.parse(stored));
-    }
+    if (!stored) return;
+    const parsed = JSON.parse(stored);
+    setTasks(parsed);
   }, []);
+
+  useEffect(() => {
+    const pendingTasks = tasks.filter(
+      (item: DataProps) => !item.isCompleted
+    );
+    const completedTask = tasks.filter(
+      (item: DataProps) => item.isCompleted
+    );
+
+    setOrderedTasks([...pendingTasks, ...completedTask])
+  }, [tasks]);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -81,7 +93,7 @@ export function TodoList() {
         </div>
 
         {/* TASKS */}
-        <Tasks tasks={tasks} removeTask={removeTask} setTasks={setTasks} />
+        <Tasks tasks={orderedTasks} removeTask={removeTask} setTasks={setTasks} />
       </div>
 
       {isModalOpen && (
