@@ -3,20 +3,28 @@
 import { orbitron } from "@/lib/fonts";
 interface TimerProps {
   stage: number;
+  counter: {
+    pomodoro: number
+    short: number
+    long: number
+  }
   switchStage: (index: number) => void;
   timeLeft: number;
   ticking: boolean;
   startTimer: () => void
 }
 
+type CounterKey = 'pomodoro' | 'short' | 'long';
+
 export function Timer({
   stage,
+  counter,
   switchStage,
   timeLeft,
   ticking,
   startTimer,
 }: TimerProps) {
-  const options = ["Pomodoro", "Descanso", "Longo Descanso"];
+  const options: { label: string;  key: CounterKey}[] = [{label: "Pomodoro", key: 'pomodoro'}, {label: "Descanso", key: 'short'}, {label: "Longo Descanso", key: "long"}];
 
   function buttonsColorByIndex(index: number) {
     if (index === 0) return "text-red-600";
@@ -68,7 +76,7 @@ export function Timer({
               onClick={() => switchStage(index)}
               className={`cursor-pointer text-[9px] ss:text-xs xs:text-sm lg:text-base`}
             >
-              {option}
+              {option.label} {counter[option.key]}
             </button>
           </li>
         ))}

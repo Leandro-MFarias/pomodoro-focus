@@ -9,58 +9,70 @@ import { MusicProvider } from "./context/context";
 export default function Home() {
   const [stage, setStage] = useState<number>(0);
   const [ticking, setTicking] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(0)
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [counter, setCounter] = useState({
+    pomodoro: 0,
+    short: 0,
+    long: 0,
+  });
 
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
-  const endTimeRef = useRef<number | null>(null)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const endTimeRef = useRef<number | null>(null);
 
   const durations = {
     0: 25 * 60,
     1: 5 * 60,
     2: 15 * 60,
-  }
+  };
 
   // Define o tempo inicial sempre que mudar o stage
   useEffect(() => {
-    setTimeLeft(durations[stage as 0 | 1 | 2] * 1000)
-    setTicking(false)
-    clearInterval(intervalRef.current!)
-  }, [stage])
+    setTimeLeft(durations[stage as 0 | 1 | 2] * 1000);
+    setTicking(false);
+    clearInterval(intervalRef.current!);
+  }, [stage]);
 
   function startTimer() {
     if (ticking) {
-      clearInterval(intervalRef.current!)
-      setTicking(false)
-      const remaining = (endTimeRef.current ?? 0) - Date.now()
-      setTimeLeft(remaining)
-    } else { 
-      const now = Date.now()
-      const remaining = timeLeft > 0 ? timeLeft : durations[stage as 0 | 1 | 2] * 1000 
-      endTimeRef.current = now + remaining
+      clearInterval(intervalRef.current!);
+      setTicking(false);
+      const remaining = (endTimeRef.current ?? 0) - Date.now();
+      setTimeLeft(remaining);
+    } else {
+      const now = Date.now();
+      const remaining =
+        timeLeft > 0 ? timeLeft : durations[stage as 0 | 1 | 2] * 1000;
+      endTimeRef.current = now + remaining;
 
-      setTicking(true)
+      setTicking(true);
       intervalRef.current = setInterval(() => {
-        const remaining = (endTimeRef.current ?? 0) - Date.now()
-  
+        const remaining = (endTimeRef.current ?? 0) - Date.now();
+
         if (remaining <= 0) {
-          clearInterval(intervalRef.current!)
+          clearInterval(intervalRef.current!);
           if (stage === 0) {
-            setTimeLeft(durations[1] * 1000)
-            setStage(1)
+            setCounter((prev) => ({ ...prev, pomodoro: prev.pomodoro + 1 }));
+            setTimeLeft(durations[1] * 1000);
+            setStage(1);
+          } else if (stage === 1) {
+            setCounter((prev) => ({ ...prev, short: prev.short + 1 }));
+            setTimeLeft(durations[0] * 1000);
+            setStage(0);
           } else {
-            setTimeLeft(durations[0] * 1000)
-            setStage(0)
+            setCounter((prev) => ({ ...prev, long: prev.long + 1 }));
+            setTimeLeft(durations[0] * 1000);
+            setStage(0);
           }
-          setTicking(false)
-          playAlarm()
-          return
+          setTicking(false);
+          playAlarm();
+          return;
         }
-  
-        setTimeLeft(remaining)
-      }, 100)
+
+        setTimeLeft(remaining);
+      }, 100);
     }
-    const audio = new Audio("/click-sound.mp3")
-    audio.play()
+    const audio = new Audio("/click-sound.mp3");
+    audio.play();
   }
 
   function switchStage(i: number) {
@@ -85,6 +97,7 @@ export default function Home() {
       {/* MAIN CONTENT */}
       <main className="h-[88%] xs:h-full grid grid-rows-[1fr_144px] xs:grid-rows-[1fr_240px] sm:grid-rows-[1fr_280px] md:grid-rows-none md:grid-cols-[1fr_320px] lg:grid-cols-[1fr_420px] xs:space-y-4 sm:space-y-0">
         <Timer
+          counter={counter}
           stage={stage}
           switchStage={switchStage}
           timeLeft={timeLeft}
