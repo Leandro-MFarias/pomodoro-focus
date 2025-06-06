@@ -24,7 +24,7 @@ export default function Home() {
   useEffect(() => {
     setTimeLeft(durations[stage as 0 | 1 | 2] * 1000)
     setTicking(false)
-    clearInterval(intervalRef.current!) // Oq é a exclamação no final
+    clearInterval(intervalRef.current!)
   }, [stage])
 
   function startTimer() {
@@ -44,7 +44,13 @@ export default function Home() {
   
         if (remaining <= 0) {
           clearInterval(intervalRef.current!)
-          setTimeLeft(0)
+          if (stage === 0) {
+            setTimeLeft(durations[1] * 1000)
+            setStage(1)
+          } else {
+            setTimeLeft(durations[0] * 1000)
+            setStage(0)
+          }
           setTicking(false)
           playAlarm()
           return
