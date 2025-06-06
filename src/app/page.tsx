@@ -27,9 +27,9 @@ export default function Home() {
 
   // Define o tempo inicial sempre que mudar o stage
   useEffect(() => {
-    setTimeLeft(durations[stage as 0 | 1 | 2] * 1000);
-    setTicking(false);
-    clearInterval(intervalRef.current!);
+    setTimeLeft(durations[stage as 0 | 1 | 2] * 1000); // Adiciona o tempo que falta para acabar
+    setTicking(false); 
+    clearInterval(intervalRef.current!); // Limpa o intervalRef caso mude o Stage
   }, [stage]);
 
   function startTimer() {
