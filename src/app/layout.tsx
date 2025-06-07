@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://pomodoro-focus-sandy.vercel.app/opengraph-image.png",
+        url: "https://pomodoro-focus-sandy.vercel.app/focuslab.png",
         width: 1200,
         height: 630,
         alt: "Logo do Focus Lab",
