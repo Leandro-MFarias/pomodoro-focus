@@ -137,3 +137,21 @@ export const zelda: Track[] = [
     url: "/audios/zelda/songs-healing.mp3",
   },
 ];
+
+export const lofi: Track[] = [
+  {
+    id: 1,
+    title: "Pajama Boy",
+    url: "/audios/lofi/pajama-boy-x-kyoshi.mp3",
+  },
+  {
+    id: 2,
+    title: "Night at Ballpark",
+    url: "/audios/lofi/night-at-ballpark.mp3",
+  },
+  {
+    id: 3,
+    title: "MaeLstro Someday",
+    url: "/audios/lofi/maelstro-someday-somehow.mp3",
+  },
+];

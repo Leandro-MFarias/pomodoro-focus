@@ -19,7 +19,7 @@ import {
 import { useState } from "react";
 import { Albums } from "./albums";
 import { useMusic } from "../context/context";
-import { clair, doom, zelda } from "../list-musics";
+import { clair, doom, lofi, zelda } from "../list-musics";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export function Musics() {
@@ -120,9 +120,18 @@ export function Musics() {
             <Albums
               img="/zelda.png"
               alt="Zelda Album"
-              name="Zelda Ocarina"
+              name="Zelda"
               tracks={`${zelda.length} tracks`}
               album={zelda}
+            />
+
+            {/* LOFI */}
+            <Albums
+              img="/lofi.jpg"
+              alt="Lofi Album"
+              name="Lofi"
+              tracks={`${lofi.length} tracks`}
+              album={lofi}
             />
             <ScrollBar orientation="horizontal" />
           </div>
