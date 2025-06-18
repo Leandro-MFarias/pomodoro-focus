@@ -22,28 +22,28 @@ export const clair: Track[] = [
   },
   {
     id: 4,
-    title: "Monoco",
-    url: "/audios/clair/monoco.mp3",
+    title: "We Lost",
+    url: "/audios/clair/we-lost.mp3",
   },
   {
     id: 5,
-    title: "Une aimer",
+    title: "Une vie à t'aimer",
     url: "/audios/clair/une-aimer.mp3",
   },
   {
     id: 6,
-    title: "Alicia",
-    url: "/audios/clair/alicia.mp3",
+    title: "Monoco",
+    url: "/audios/clair/monoco.mp3",
   },
   {
     id: 7,
-    title: "Portrait Imparfait",
-    url: "/audios/clair/portrait-imparfait.mp3",
+    title: "Golgra",
+    url: "/audios/clair/golgra.mp3",
   },
   {
     id: 8,
-    title: "Lost Voice",
-    url: "/audios/clair/lost_voice.mp3",
+    title: "Sirène - Tisser la Beauté",
+    url: "/audios/clair/sirene-tisser-beaute.mp3",
   },
   {
     id: 9,
@@ -57,13 +57,73 @@ export const clair: Track[] = [
   },
   {
     id: 11,
-    title: "World Map Lumieres Name",
-    url: "/audios/clair/sirene-robe-de-jour.mp3",
+    title: "Sirène - Rouge d'Iris",
+    url: "/audios/clair/sirene-rouge-dIris.mp3",
   },
   {
     id: 12,
+    title: "Portrait Imparfait",
+    url: "/audios/clair/portrait-imparfait.mp3",
+  },
+  {
+    id: 13,
+    title: "Une vie à peindre",
+    url: "/audios/clair/une-peindre.mp3",
+  },
+  {
+    id: 14,
+    title: "Visages - Idéal Mental",
+    url: "/audios/clair/visages-ideal-mental.mp3",
+  },
+  {
+    id: 15,
+    title: "Beneath the Blue Tree",
+    url: "/audios/clair/beneath-the-blue-tree.mp3",
+  },
+  {
+    id: 16,
+    title: "Lampmaster",
+    url: "/audios/clair/lampmaster.mp3",
+  },
+  {
+    id: 17,
+    title: "Alicia",
+    url: "/audios/clair/alicia.mp3",
+  },
+  {
+    id: 18,
+    title: "Lost Voice",
+    url: "/audios/clair/lost_voice.mp3",
+  },
+  {
+    id: 19,
+    title: "Goblu",
+    url: "/audios/clair/goblu.mp3",
+  },
+  {
+    id: 20,
     title: "Lune",
     url: "/audios/clair/lune.mp3",
+  },
+  {
+    id: 21,
+    title: "Une vie à rêver",
+    url: "/audios/clair/une-rever.mp3",
+  },
+  {
+    id: 22,
+    title: "Warding Blades",
+    url: "/audios/clair/warding-blades.mp3",
+  },
+  {
+    id: 23,
+    title: "World Map Lumieres Name",
+    url: "/audios/clair/world-lumieres-name.mp3",
+  },
+  {
+    id: 24,
+    title: "Gustave",
+    url: "/audios/clair/gustave.mp3",
   },
 ];
 
