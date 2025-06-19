@@ -22,8 +22,8 @@ export const clair: Track[] = [
   },
   {
     id: 4,
-    title: "We Lost",
-    url: "/audios/clair/we-lost.mp3",
+    title: "Visages - Idéal Mental",
+    url: "/audios/clair/visages-ideal-mental.mp3",
   },
   {
     id: 5,
@@ -72,8 +72,8 @@ export const clair: Track[] = [
   },
   {
     id: 14,
-    title: "Visages - Idéal Mental",
-    url: "/audios/clair/visages-ideal-mental.mp3",
+    title: "We Lost",
+    url: "/audios/clair/we-lost.mp3",
   },
   {
     id: 15,
